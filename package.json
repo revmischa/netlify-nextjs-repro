@@ -1,0 +1,62 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "start:common": "cd packages/common && npm start",
+    "start:repo": "cd packages/repo && npm start",
+    "start:api": "cd packages/api && npm start",
+    "start:local": "cd packages/infra && npm start",
+    "start": "concurrently npm:start:*",
+    "build:repo": "cd packages/repo && npm run build",
+    "build:api": "cd packages/api && npm run build",
+    "build:common": "cd packages/common && npm run build",
+    "build": "concurrently npm:build:*",
+    "db:init:local": "cd packages/repo && npm run db:init:local",
+    "deploy:infra": "npm run build && cd packages/infra && npm run deploy:prd",
+    "prettier:exc": "./node_modules/.bin/prettier --config .prettierrc --write",
+    "prettier": "npm run prettier:exc -- '**/*.{js,ts,tsx,css,json,yaml,yml,md}'",
+    "lint": "eslint packages/*/src/**",
+    "test": "echo not implemented"
+  },
+  "engines": {
+    "node": ">=0.14",
+    "npm": ">=7.0.0"
+  },
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "dependencies": {
+    "@jetkit/cdk": "~0.3.2",
+    "aws-xray-sdk": "^3.3.3",
+    "typeorm": "^0.2.32",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.0",
+    "@types/uuid": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
+    "babel-eslint": "^10.1.0",
+    "concurrently": "^6.2.0",
+    "eslint": "^7.27.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.3.1",
+    "typescript": "^4.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{*.{ts,js},!(node*)**/*.{ts,tsx,js,jsx}}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}

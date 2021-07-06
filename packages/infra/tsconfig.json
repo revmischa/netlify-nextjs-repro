@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./build",
+    "module": "commonjs",
+    "target": "ES2018",
+    "esModuleInterop": true,
+    "lib": []
+  },
+  "exclude": ["cdk.out"]
+}
