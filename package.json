@@ -9,7 +9,7 @@
     "start:build": "tsc --build --watch",
     "start": "npm run build && concurrently npm:start:*",
     "build": "tsc --build",
-    "build:frontend": "npm run build && npm run -w frontend build",
+    "build:frontend": "npm ci && npm run build && npm run -w frontend build",
     "db:init:local": "npm run db:init:local -w template-repo",
     "deploy:dev": "npm run build && npm run deploy:dev -w template-infra",
     "deploy:prd": "npm run build && npm run deploy:prd -w template-infra",
