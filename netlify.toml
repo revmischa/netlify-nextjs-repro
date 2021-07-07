@@ -1,5 +1,6 @@
 [build]
-  command = "npm i -g npm@7 && npm run build && npm -w frontend build"
+  command = "cd ../.. && npm i -g npm@7 && npm run build && npm -w frontend build"
+  base = "packages/frontend"
   publish = "packages/frontend/build"
 
 [[plugins]]
