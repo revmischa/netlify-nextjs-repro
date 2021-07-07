@@ -1,5 +1,8 @@
 [build]
-  command = "cd ../.. && npm i -g npm@7 && npm run build:ci:frontend"
+  # install npm 7 and build from top level
+  command = "cd ../.. && npm i -g npm@7 && npm i --no-save @netlify/plugin-nextjs && npm run build:ci:frontend"
+
+  # where netlify lives
   base = "packages/frontend"
   publish = "packages/frontend/build"
 
