@@ -1,7 +1,0 @@
-[build]
-  command = "npm i -g npm@7 && npm run build && npm -w frontend build"
-  publish = "packages/frontend/build"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
